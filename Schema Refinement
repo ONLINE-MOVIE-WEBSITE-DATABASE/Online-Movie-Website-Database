@@ -1,7 +1,127 @@
 ## ADMIN Table:
-* Attributes are: Aid, Aname ,Category, Time
+Attributes are: Aid, Aname ,Category, Time
 Primary Key/Key Attributes: Aid
 Non key attributes: Aname, Category, Time
 Functional dependencies are :
 Aid->Aname
 Aid->Category
+Category -> Time
+1NF: All the attributes in the Admin table are single valued attributes so, we can say Admin table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Admin table is in 2NF.
+3NF: Category depends on Aid and Time depends on category. Which is a transitive dependency As there is a transitive dependency table is not in 3NF. 
+To make it into 3NF we perform decomposition on the Admin Table.
+Admin (Aid, Aname, Category, Time) decomposed into 
+Admin1 (Aid, Aname, Category) and   Admin2(Category, Time)
+As there is no transitive dependencies in the new tables formed 
+Therefore, Admin table is in 3NF.
+
+## Movie List Table:
+Attributes: MID, MNAME, LANGUAGE, RATING
+Primary Key/Key Attributes: Mid
+Non key attributes: MNAME, LANGUAGE, RATING
+Functional dependencies are:
+Mid->Mname
+Mid->Language
+Mid-> Rating
+1NF: All the attributes in the MovieList table are single valued attributes so, we can say MovieList table is in INF.
+2NF:Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency(A non key attribute depends on part of a primary key), so we can say MovieList table is in 2NF.
+3NF: From above FD’S we can observe that there is no transitive dependency so, we can say that the MovieList table is in 3NF.
+
+## Collect Table:
+Attributes: Aid, Mid, DOC
+Primary Key/Key Attributes: Aid,Mid
+Non key attributes: Doc
+Functional dependencies are:
+Aid,Mid -> Doc
+1NF: All the attributes in the Collect table are single valued attributes so, we can say Collect table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Collect table is in 2NF.
+3NF: From above FD’S we can observe that there is no transitive dependency so, we can say that the Collect table is in 3NF.
+
+## Distributor Table:
+Attributes are: DID,DNA$%%%%ME ,PRICE,MID ,STATUS ,DOR 
+Primary Key/Key Attributes: MID
+Non key attributes: DNAME, PRICE, DID, STATUS, DOR 
+Functional dependencies are:
+Did -> DName
+Did-> Mid
+Mid-> Status
+Mid-> DOR
+Mid->Price
+1NF: All the attributes in the Distributor table are single valued attributes so, we can say, the Distributor table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Collect table is in 2NF.
+3NF: From above FD’S we can observe that Mid depends on Did, Status depends on Mid, DOR depends on Mid, Price depends on Mid, Which is a transitive dependency.
+As there is a transitive dependency table is not in 3NF. To make it into 3NF we perform decomposition on the Distributor Table.It is decomposed as:
+Distributor (Did, Dname, Mid, Status, Price) decomposed into 
+Distributor 1(Did, Dname, Mid) and   Distributor 2(Mid, Status, DOR, Price)
+As there is no transitive dependencies in the new tables formed 
+Therefore, Distributor table is in 3NF
+
+## Purchase Table:
+Attributes are: PID, AID, MID, DOP
+Primary Key/Key Attributes are: PID
+Non Key Attributes are: AID, MID, DOP
+Functional dependencies are:
+Pid -> Aid
+Pid -> Mid
+Pid-> DOP
+1NF: All the attributes in the Purchase table are single valued attributes so, we can say, the Purchase table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Purchase table is in 2NF.
+3NF: From above FD’S we can observe that there is no transitive dependency so, we can say that the Purchase table is in 3NF.
+
+## Movie Table:
+Attributes are: M_ID, MNAME, LANGUAGE,DURATION 
+Primary Key/Key Attributes are: M_ID
+Non Key Attributes are: MNAME, LANGUAGE,DURATION 
+Functional dependencies are:
+Mid -> MNAME
+Mid -> LANGUAGE
+Mid -> DURATION
+1NF:  All the attributes in the Movie table are single valued attributes so, we can say, the Movie table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Purchase table is in 2NF.
+3NF: From above FD’S we can observe that there is no transitive dependency so, we can say that the Movie table is in 3NF.
+
+## Release Table:
+Attributes are: PID,M_ID,PRICE,DOR
+Primary Key/Key Attributes are: PID
+Non Key Attributes are: M_ID, PRICE, DOR
+Functional dependencies are:
+PID -> DOR
+PID -> PRICE
+1NF: All the attributes in the Release table are single valued attributes so, we can say, the Release table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Releases table is in 2NF.
+3NF: From above FD’S we can observe that there is no transitive dependency so, we can say that the Releases table is in 3NF.
+
+## CUSTOMER Table:
+Attributes are: CNAME, CID, PASSWORD, DOB, GENDER, PHNO, ADDRESS, CITY, and PINCODE 
+Primary Key/Key Attributes are: CID
+Non Key Attributes are: CNAME, PASSWORD, DOB, GENDER, PHNO, ADDRESS, CITY, and PINCODE 
+Functional dependencies are:
+CID -> CNAME
+CID -> PASSWORD
+CID -> DOB
+CID -> GENDER
+CID -> PHNO
+CID -> ADDRESS
+CID -> CITY
+CID -> PINCODE
+PINCODE -> CITY
+1NF: All the attributes in the Customer table are single valued attributes so, we can say, the Customer table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency (A non key attribute depends on part of a primary key), so we can say Customer table is in 2NF.
+(CNAME, CID, PASSWORD, DOB, GENDER, PHNO, ADDRESS, CITY, and PINCODE) decomposed into 
+CUSTOMER1 (CID, CNAME, PASSWORD, DOB, GENDER, PHNO, ADDRESS)   CUSTOMER2 (PINCODE, CITY)
+
+## PURCHASE_c TABLE:
+Attributes are: PID, M_ID,PRICE,CID, DOP 
+Primary Key/Key Attributes are: PID
+Non Key Attributes are: M_ID, PRICE, CID, DOP 
+Functional dependencies are:
+PID -> MID
+PID -> CID
+PID -> DOP
+PID -> PRICE
+1NF: All the attributes in the PURCHASE_C   table are single valued attributes so, we can say, the  PURCHASE_C   table is in INF.
+2NF: Above FD’s are mapping from key attribute to non key attribute and there is no partial dependency(A non key attribute depends on part of a primary key), so we can say  PURCHASE_C    table is in 2NF.
+3NF: From above FD’S we can observe that there is no transitive dependency so, we can say that the  PURCHASE_C  table is in 3NF.
+
+
+
