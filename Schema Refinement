@@ -1,1 +1,7 @@
-
+## ADMIN Table:
+* Attributes are: Aid, Aname ,Category, Time
+Primary Key/Key Attributes: Aid
+Non key attributes: Aname, Category, Time
+Functional dependencies are :
+Aid->Aname
+Aid->Category
